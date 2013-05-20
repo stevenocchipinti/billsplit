@@ -1,1 +1,35 @@
-<h2>Calculator view</h2>
+<div ng-controller="EntryCtrl">
+
+<form>
+  <div class="control-group">
+    <label class="control-label" for="inputItemName">Name of item (optional):</label>
+    <div class="controls">
+      <input type="text" id="inputItemName" placeholder="e.g. Eye Fillet">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label" for="inputPrice">Price:</label>
+    <div class="controls input-prepend">
+      <span class="add-on">$</span>
+      <input type="number" step="any" id="inputItemPrice" value="1" required="required">
+    </div>
+  </div>
+
+  <div class="control-group">
+    <label class="control-label">Select the people who had this item:</label>
+    <table class="table table-bordered">
+      <tr ng-click="foo()" ng-repeat="person in people">
+        <td><input class="person" type="checkbox" id="{{person.id}}"/></td>
+        <td><label for="{{person.id}}">{{person.name}}</label></td>
+        <td><label for="{{person.id}}">({{person.itemCount()}}) ${{person.total()}}</label></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <button ng-click="addItemToPeople()" type="submit" class="btn btn-primary">Next Item</button>
+    </div>
+  </div>
+</div>
