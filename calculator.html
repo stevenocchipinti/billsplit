@@ -2,34 +2,60 @@
 
 <form>
   <div class="control-group">
-    <label class="control-label" for="inputItemName">Name of item (optional):</label>
-    <div class="controls">
-      <input type="text" id="inputItemName" placeholder="e.g. Eye Fillet">
-    </div>
+    <label class="control-label" for="inputPrice">Price of item:</label>
+    <input class="input-block-level" type="number" step="any" id="inputItemPrice" value="1" required="required">
   </div>
 
   <div class="control-group">
-    <label class="control-label" for="inputPrice">Price:</label>
-    <div class="controls input-prepend">
-      <span class="add-on">$</span>
-      <input type="number" step="any" id="inputItemPrice" value="1" required="required">
+    <label class="control-label" for="inputItemName">Name of item (optional):</label>
+    <div class="controls">
+      <input class="input-block-level" type="text" id="inputItemName" placeholder="e.g. Eye Fillet">
     </div>
   </div>
+
 
   <div class="control-group">
     <label class="control-label">Select the people who had this item:</label>
-    <table class="table table-bordered">
-      <tr ng-click="foo()" ng-repeat="person in people">
-        <td><input class="person" type="checkbox" id="{{person.id}}"/></td>
-        <td><label for="{{person.id}}">{{person.name}}</label></td>
-        <td><label for="{{person.id}}">({{person.itemCount()}}) ${{person.total()}}</label></td>
-      </tr>
-    </table>
+
+
+    <div class="accordion" id="person-accordion">
+      <div ng-repeat="person in people" class="accordion-group">
+
+        <div class="accordion-heading" style="margin: 10px 15px;">
+          <label class="checkbox" for="{{person.id}}">
+            <input class="person" type="checkbox" id="{{person.id}}"/>
+            {{person.summary()}}
+            <a style="float: right; margin-left: 3px;" data-toggle="collapse" data-target="#collapseItemsPerson{{person.id}}">
+              <i class="icon-list"></i>
+            </a>
+            <a style="float: right; margin-left: 3px;" data-toggle="collapse" data-target="#collapseDetailsPerson{{person.id}}">
+              <i class="icon-user"></i>
+            </a>
+          </label>
+        </div>
+
+        <div id="collapseItemsPerson{{person.id}}" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <ul>
+              <li ng-repeat="item in person.items">{{item}}</li>
+            </ul>
+          </div>
+        </div>
+
+        <div id="collapseDetailsPerson{{person.id}}" class="accordion-body collapse">
+          <div class="accordion-inner">
+            <input ng-model="person.name"/>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 
   <div class="control-group">
     <div class="controls">
-      <button ng-click="addItemToPeople()" type="submit" class="btn btn-primary">Next Item</button>
+      <button ng-click="addItemToPeople()" type="submit" class="btn btn-large btn-block btn-primary">Next Item</button>
     </div>
   </div>
 </div>

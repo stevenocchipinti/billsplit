@@ -37,6 +37,13 @@ function CalculatorCtrl($scope, $location, $routeParams) {
         var total = 0.00;
         angular.forEach(this.items, function(item) { total += item.price });
         return total;
+      },
+      summary: function() {
+        if (this.itemCount() > 0) {
+          return this.name + " - $" + this.total() + " (" + this.itemCount() + ")";
+        } else {
+          return this.name;
+        }
       }
     };
   }
@@ -44,7 +51,7 @@ function CalculatorCtrl($scope, $location, $routeParams) {
   $scope.addItemToPeople = function() {
     angular.forEach($('input.person[type="checkbox"]:checked'), function(person) {
       $scope.people[person.id].items.push({
-        name: $('#inputItemName'),
+        name: $('#inputItemName').val(),
         price: parseFloat($('#inputItemPrice').val())
       });
     });
