@@ -37,14 +37,22 @@
         <div id="collapseItemsPerson{{person.id}}" class="accordion-body collapse">
           <div class="accordion-inner">
             <ul>
-              <li ng-repeat="item in person.items">{{item}}</li>
+              <li ng-repeat="item in person.items">
+                {{item.name}} (${{item.price}})
+              </li>
             </ul>
           </div>
         </div>
 
         <div id="collapseDetailsPerson{{person.id}}" class="accordion-body collapse">
           <div class="accordion-inner">
-            <input ng-model="person.name"/>
+            <div class="form-inline">
+              <label for="inputNamePerson{{person.id}}">
+                Name:
+                <input type="text" class="input-small" id="inputNamePerson{{person.id}}" ng-model="person.name"/>
+                <button class="btn" data-toggle="collapse" data-target="#collapseDetailsPerson{{person.id}}">Done</button>
+              </label>
+            </div>
           </div>
         </div>
 
