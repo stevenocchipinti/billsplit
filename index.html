@@ -11,10 +11,12 @@
   </head>
   <body>
     <div style="margin: 10px;" class="container-fluid">
-      <h1><a href="/">Bill Split</a></h1>
-      <hr />
+      <div class="header" ng-controller="IndexCtrl">
+        <h1><a ng-click="goToRoot()">Bill Split</a></h1>
+        <hr />
+      </div>
       <div ng-view></div>
-  </div>
+    </div>
 
     <script src="js/bootstrap.min.js"></script>
   </body>

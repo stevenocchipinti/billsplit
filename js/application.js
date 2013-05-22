@@ -13,6 +13,13 @@ angular.module('billSplit', []).
   });
 
 
+function IndexCtrl($scope, $location) {
+  $scope.goToRoot = function() {
+    $location.path('/');
+  }
+}
+
+
 function EntryCtrl($scope, $location) {
   $scope.numberOfPeople = 4;
   $scope.goToCalculator = function() {
