@@ -1,6 +1,12 @@
 <div ng-controller="EntryCtrl">
 
 <form>
+
+  <div class="btn-group control-group row-fluid" data-toggle="buttons-radio">
+    <button type="button" class="btn btn-large span6 active">One each</button>
+    <button type="button" class="btn btn-large span6">Sharing</button>
+  </div>
+
   <div class="control-group">
     <label class="control-label" for="inputPrice">Price of item ($):</label>
     <input class="input-block-level" type="number" step="any" id="inputItemPrice" placeholder="e.g. 3.95" required="required">
