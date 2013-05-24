@@ -67,7 +67,7 @@ function CalculatorCtrl($scope, $location, $routeParams) {
 
   $scope.resetFields = function() {
     $('#inputItemName').val('');
-    $('#inputItemPrice').val('1');
+    $('#inputItemPrice').val('');
     $('input.person[type="checkbox"]').prop("checked", false);
   }
 }
