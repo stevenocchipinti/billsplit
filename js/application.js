@@ -63,6 +63,8 @@ function CalculatorCtrl($scope, $location, $routeParams) {
     var name = $('#inputItemName').val();
     var price = parseFloat($('#inputItemPrice').val());
 
+    if (!price > 0 || !people.length > 0) return;
+
     angular.forEach(people, function(person) {
       $scope.people[person.id].items.push({
         name: name,
