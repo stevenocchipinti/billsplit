@@ -74,6 +74,11 @@ function CalculatorCtrl($scope, $location, $routeParams) {
     $scope.resetFields();
   };
 
+  $scope.removeItemFromPerson = function(item, person) {
+    id = $scope.people[person.id].items.indexOf(item);
+    $scope.people[person.id].items.splice(id, 1);
+  };
+
   $scope.resetFields = function() {
     $('#inputItemName').val('');
     $('#inputItemPrice').val('');
